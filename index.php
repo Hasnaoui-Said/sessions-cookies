@@ -1,19 +1,6 @@
 <?php
-    /* Configure le limiteur de cache à 'private' */
 
-    session_cache_limiter('private');
-    $cache_limiter = session_cache_limiter();
-
-    /* Configure le délai d'expiration à 30 minutes */
-    session_cache_expire(30);
-    $cache_expire = session_cache_expire();
-
-    /* Démarre la session */
-
-    session_start();
-
-    echo "Le limiteur de cache est maintenant fixé à $cache_limiter<br />";
-    echo "La session en cache va expirer après $cache_expire minutes";
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

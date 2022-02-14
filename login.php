@@ -1,6 +1,13 @@
 
 <?php
-
+    session_start();
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        extract($_POST);
+        $_SESSION['auth'] = [
+            'email'=> $email,
+            'pass'=> $pass
+        ];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +21,7 @@
 </head>
 <body class="container bg-info d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
 
-    <form 
+    <form action="login.php" method="POST"
             class="bg-white pb-5 w-50 d-flex flex-column justify-content-center align-items-center gap-3 rounded">
         <div class="form-group w-50 text-center my-3">
             <h1>Login form</h1>

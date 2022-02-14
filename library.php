@@ -1,21 +1,25 @@
 <?php
+    session_start();
 
     function isLoged(){
         if(isset($_SESSION['auth']) && isset($_SESSION['auth']['email']) && isset($_SESSION['auth']['pass'])){
             extract($_SESSION['auth']);
-            mysql_connect("localhost", "root", "");
-            mysql_select_db("auth");
-
-            $sql = "SELECT * FROM users WHERE id = '$id' AND pass = '$pass'";
-            $res = mysql_query($sql) or die(mysql_error);
-            if(mysql_num_rows($res) > 0)
+            $conn = new mysqli("localhost", "root", "", "project_db");
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            $sql = "SELECT * FROM users WHERE email = '$email' AND pass = '$pass'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                $conn->close();
                 return true;
-            else 
+            }
+            else {
+                $conn->close();
                 return false;
-        }else 
+            }
+        }else
             return false;
     }
-
-    
-
+echo "sjcfheuhcfehchehfci";
 ?>
