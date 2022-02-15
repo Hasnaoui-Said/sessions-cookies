@@ -1,12 +1,27 @@
 
 <?php
     session_start();
+    extract($_SESSION);
+    if(!empty($_SESSION['auth'])){
+        header('location: pagePrivee.php');
+        die();
+    }
+    $status = "";
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         extract($_POST);
-        $_SESSION['auth'] = [
-            'email'=> $email,
-            'pass'=> $pass
-        ];
+        if(!empty($pass) && !empty($email)){
+            include_once('library.php');
+            if(isLoged($pass, $email)){
+                $_SESSION['auth'] = array(
+                    "email"=> $email,
+                    "pass"=> $pass
+                );
+               header('location: pagePrivee.php');
+            }else 
+                $status = "mauvais login";
+
+        }
+
     }
 ?>
 <!DOCTYPE html>
@@ -26,6 +41,7 @@
         <div class="form-group w-50 text-center my-3">
             <h1>Login form</h1>
             <p> Sécuriser avec les Sessions</p>
+            <pre class="alert alert-danger"><?php echo $status; ?></pre>
         </div>
         <div class="form-group w-50">
             <label for="email">Address email:</label>

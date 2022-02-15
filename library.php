@@ -1,9 +1,8 @@
 <?php
-    session_start();
+    // session_start();
 
-    function isLoged(){
-        if(isset($_SESSION['auth']) && isset($_SESSION['auth']['email']) && isset($_SESSION['auth']['pass'])){
-            extract($_SESSION['auth']);
+    function isLoged($pass, $email){
+        if(isset($email) && isset($pass)){
             $conn = new mysqli("localhost", "root", "", "project_db");
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
@@ -14,12 +13,12 @@
                 $conn->close();
                 return true;
             }
-            else {
-                $conn->close();
-                return false;
-            }
-        }else
+            
+            $conn->close();
             return false;
+            
+        }
+
+        return false;
     }
-echo "sjcfheuhcfehchehfci";
 ?>

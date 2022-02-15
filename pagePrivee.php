@@ -1,5 +1,11 @@
 <?php
     session_start();
+    include('library.php');
+    extract($_SESSION);
+    if(empty($_SESSION['auth'])){
+        header('location: login.php');
+        die();
+    }
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +19,8 @@
 </head>
 <body>
 
-    <h1>Page privee</h1>
+    <h1>Pannel : Page privee</h1>
+    <a href="logout.php">Ce deconnecter</a>
     <p class="bg-success">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam eius odit unde expedita nostrum, error assumenda quo sunt atque qui?
     Sapiente quo nam possimus et! Debitis necessitatibus tempore temporibus, expedita voluptatem nemo! Aut odit nesciunt sit nobis distinctio blanditiis cupiditate?
     Facilis itaque, explicabo accusamus quo incidunt numquam laboriosam fuga. Consequuntur exercitationem, fuga esse praesentium nulla quasi recusandae officiis at libero?

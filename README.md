@@ -9,7 +9,7 @@ session_​name()
 session_​regenerate_​id(true)
 session_​start()
 session_status() 0, 1, 2
-session_​unset()
+session_​unset('') Détruire une session
 session_​write_​close()
 
 

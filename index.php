@@ -1,5 +1,7 @@
 <?php
 
+
+
     
 ?>
 <!DOCTYPE html>
@@ -13,11 +15,9 @@
 </head>
 <body>
 
-    <?php
-        echo session_id().'<br/>';
-        echo session_name();
-    ?>
+    
     <h1>Page publique</h1>
+    <a href="pagePrivee.php">Lien vers la page privee</a>
     <!-- session.gc_maxlifetime -->
     <p class="bg-warning">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam eius odit unde expedita nostrum, error assumenda quo sunt atque qui?
     Sapiente quo nam possimus et! Debitis necessitatibus tempore temporibus, expedita voluptatem nemo! Aut odit nesciunt sit nobis distinctio blanditiis cupiditate?
